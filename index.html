@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iSolutions Service Center - Catálogo</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+--primary: #4CAF50;
+--primary-dark: #388E3C;
+--primary-light: #81C784;
+--black: #1a1a1a;
+--dark-gray: #2d2d2d;
+--gray: #666;
+--light-gray: #f5f5f5;
+--white: #ffffff;
+--shadow: 0 4px 20px rgba(0,0,0,0.1);
+--shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+--radius: 16px;
+--radius-sm: 8px;
+}
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Poppins', sans-serif;
+background: var(--light-gray);
+color: var(--black);
+line-height: 1.6;
+}
+
+/* ===== HEADER ===== */
+.header {
+background: var(--black);
+padding: 1rem 0;
+position: sticky;
+top: 0;
+z-index: 1000;
+box-shadow: var(--shadow);
+}
+
+.header-container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 2rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.logo-section {
+display: flex;
+align-items: center;
+gap: 1rem;
+}
+
+.logo-img {
+width: 60px;
+height: 60px;
+border-radius: 50%;
+object-fit: cover;
+border: 3px solid var(--primary);
+}
+
+.logo-text h1 {
+color: var(--white);
+font-size: 1.5rem;
+font-weight: 700;
+letter-spacing: 1px;
+}
+
+.logo-text span {
+color: var(--primary);
+font-size: 0.85rem;
+font-weight: 500;
+}
+
+.header-actions {
+display: flex;
+gap: 1rem;
+align-items: center;
+}
+
+.btn {
+padding: 0.75rem 1.5rem;
+border: none;
+border-radius: var(--radius-sm);
+font-family: 'Poppins', sans-serif;
+font-weight: 600;
+font-size: 0.9rem;
+cursor: pointer;
+transition: all 0.3s ease;
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+}
+
+.btn-primary {
+background: var(--primary);
+color: var(--white);
+}
+
+.btn-primary:hover {
+background: var(--primary-dark);
+transform: translateY(-2px);
+box-shadow: var(--shadow);
+}
+
+.btn-outline {
+background: transparent;
+color: var(--white);
+border: 2px solid var(--primary);
+}
+
+.btn-outline:hover {
+background: var(--primary);
+transform: translateY(-2px);
+}
+
+.btn-danger {
+background: #e53935;
+color: var(--white);
+}
+
+.btn-danger:hover {
+background: #c62828;
+}
+
+.btn-sm {
+padding: 0.5rem 1rem;
+font-size: 0.8rem;
+}
+
+/* ===== HERO ===== */
+.hero {
+background: linear-gradient(135deg, var(--black) 0%, var(--dark-gray) 100%);
+padding: 4rem 2rem;
+text-align: center;
+position: relative;
+overflow: hidden;
+}
+
+.hero::before {
+content: '';
+position: absolute;
+top: -50%;
+right: -20%;
+width: 600px;
+height: 600px;
+background: radial-gradient(circle, rgba(76,175,80,0.1) 0%, transparent 70%);
+border-radius: 50%;
+}
+
+.hero-content {
+position: relative;
+z-index: 1;
+max-width: 800px;
+margin: 0 auto;
+}
+
+.hero h2 {
+color: var(--white);
+font-size: 2.5rem;
+font-weight: 800;
+margin-bottom: 1rem;
+}
+
+.hero h2 span {
+color: var(--primary);
+}
+
+.hero p {
+color: #aaa;
+font-size: 1.1rem;
+margin-bottom: 2rem;
+}
+
+.contact-info {
+display: flex;
+justify-content: center;
+gap: 2rem;
+flex-wrap: wrap;
+margin-top: 2rem;
+}
+
+.contact-item {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+color: var(--white);
+font-size: 0.95rem;
+}
+
+.contact-item i {
+color: var(--primary);
+font-size: 1.2rem;
+}
+
+/* ===== SEARCH & FILTERS ===== */
+.filters-section {
+max-width: 1200px;
+margin: -2rem auto 0;
+padding: 0 2rem;
+position: relative;
+z-index: 10;
+}
+
+.filters-card {
+background: var(--white);
+border-radius: var(--radius);
+padding: 1.5rem 2rem;
+box-shadow: var(--shadow);
+display: flex;
+gap: 1rem;
+flex-wrap: wrap;
+align-items: center;
+justify-content: space-between;
+}
+
+.search-box {
+flex: 1;
+min-width: 250px;
+position: relative;
+}
+
+.search-box input {
+width: 100%;
+padding: 0.85rem 1rem 0.85rem 3rem;
+border: 2px solid #e0e0e0;
+border-radius: var(--radius-sm);
+font-family: 'Poppins', sans-serif;
+font-size: 0.95rem;
+transition: all 0.3s;
+}
+
+.search-box input:focus {
+outline: none;
+border-color: var(--primary);
+}
+
+.search-box i {
+position: absolute;
+left: 1rem;
+top: 50%;
+transform: translateY(-50%);
+color: var(--gray);
+}
+
+.category-filters {
+display: flex;
+gap: 0.5rem;
+flex-wrap: wrap;
+}
+
+.filter-btn {
+padding: 0.6rem 1.2rem;
+border: 2px solid #e0e0e0;
+background: var(--white);
+border-radius: 25px;
+font-family: 'Poppins', sans-serif;
+font-weight: 500;
+font-size: 0.85rem;
+cursor: pointer;
+transition: all 0.3s;
+color: var(--gray);
+}
+
+.filter-btn:hover, .filter-btn.active {
+background: var(--primary);
+color: var(--white);
+border-color: var(--primary);
+}
+
+/* ===== MAIN CONTENT ===== */
+.main-content {
+max-width: 1200px;
+margin: 3rem auto;
+padding: 0 2rem;
+}
+
+.section-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 2rem;
+}
+
+.section-header h3 {
+font-size: 1.5rem;
+font-weight: 700;
+}
+
+.section-header h3 span {
+color: var(--primary);
+}
+
+.products-count {
+color: var(--gray);
+font-size: 0.9rem;
+font-weight: 500;
+}
+
+/* ===== PRODUCTS GRID ===== */
+.products-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+gap: 2rem;
+}
+
+.product-card {
+background: var(--white);
+border-radius: var(--radius);
+overflow: hidden;
+box-shadow: var(--shadow);
+transition: all 0.3s ease;
+position: relative;
+}
+
+.product-card:hover {
+transform: translateY(-8px);
+box-shadow: var(--shadow-hover);
+}
+
+.product-image {
+width: 100%;
+height: 220px;
+object-fit: cover;
+background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+display: flex;
+align-items: center;
+justify-content: center;
+color: var(--gray);
+font-size: 3rem;
+}
+
+.product-image img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+.product-badge {
+position: absolute;
+top: 1rem;
+right: 1rem;
+background: var(--primary);
+color: var(--white);
+padding: 0.3rem 0.8rem;
+border-radius: 20px;
+font-size: 0.75rem;
+font-weight: 700;
+text-transform: uppercase;
+}
+
+.product-badge.sale {
+background: #ff5722;
+}
+
+.product-info {
+padding: 1.5rem;
+}
+
+.product-category {
+color: var(--primary);
+font-size: 0.8rem;
+font-weight: 600;
+text-transform: uppercase;
+letter-spacing: 1px;
+margin-bottom: 0.5rem;
+}
+
+.product-name {
+font-size: 1.1rem;
+font-weight: 700;
+margin-bottom: 0.5rem;
+color: var(--black);
+}
+
+.product-description {
+color: var(--gray);
+font-size: 0.85rem;
+margin-bottom: 1rem;
+line-height: 1.5;
+}
+
+.product-footer {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding-top: 1rem;
+border-top: 1px solid #eee;
+}
+
+.product-price {
+font-size: 1.3rem;
+font-weight: 800;
+color: var(--primary);
+}
+
+.product-price .original {
+font-size: 0.9rem;
+color: #999;
+text-decoration: line-through;
+margin-left: 0.5rem;
+font-weight: 500;
+}
+
+.product-actions {
+display: flex;
+gap: 0.5rem;
+}
+
+.icon-btn {
+width: 36px;
+height: 36px;
+border-radius: 50%;
+border: none;
+background: var(--light-gray);
+color: var(--gray);
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: all 0.3s;
+}
+
+.icon-btn:hover {
+background: var(--primary);
+color: var(--white);
+}
+
+.icon-btn.delete:hover {
+background: #e53935;
+}
+
+/* ===== ADMIN PANEL ===== */
+.admin-panel {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0,0,0,0.6);
+z-index: 2000;
+align-items: center;
+justify-content: center;
+padding: 2rem;
+}
+
+.admin-panel.active {
+display: flex;
+}
+
+.admin-card {
+background: var(--white);
+border-radius: var(--radius);
+width: 100%;
+max-width: 600px;
+max-height: 90vh;
+overflow-y: auto;
+box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+.admin-header {
+background: var(--black);
+color: var(--white);
+padding: 1.5rem 2rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.admin-header h3 {
+font-size: 1.3rem;
+display: flex;
+align-items: center;
+gap: 0.5rem;
+}
+
+.admin-header h3 i {
+color: var(--primary);
+}
+
+.close-btn {
+background: none;
+border: none;
+color: var(--white);
+font-size: 1.5rem;
+cursor: pointer;
+width: 36px;
+height: 36px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: all 0.3s;
+}
+
+.close-btn:hover {
+background: rgba(255,255,255,0.1);
+}
+
+.admin-body {
+padding: 2rem;
+}
+
+.form-group {
+margin-bottom: 1.5rem;
+}
+
+.form-group label {
+display: block;
+margin-bottom: 0.5rem;
+font-weight: 600;
+font-size: 0.9rem;
+color: var(--black);
+}
+
+.form-group label span {
+color: #e53935;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+width: 100%;
+padding: 0.85rem 1rem;
+border: 2px solid #e0e0e0;
+border-radius: var(--radius-sm);
+font-family: 'Poppins', sans-serif;
+font-size: 0.95rem;
+transition: all 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+outline: none;
+border-color: var(--primary);
+}
+
+.form-group textarea {
+resize: vertical;
+min-height: 100px;
+}
+
+.form-row {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 1rem;
+}
+
+.image-preview {
+width: 100%;
+height: 150px;
+border: 2px dashed #ddd;
+border-radius: var(--radius-sm);
+display: flex;
+align-items: center;
+justify-content: center;
+color: var(--gray);
+margin-top: 0.5rem;
+overflow: hidden;
+background: #fafafa;
+}
+
+.image-preview img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+.checkbox-group {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+width: 20px;
+height: 20px;
+accent-color: var(--primary);
+}
+
+.admin-footer {
+padding: 1.5rem 2rem;
+border-top: 1px solid #eee;
+display: flex;
+justify-content: flex-end;
+gap: 1rem;
+}
+
+/* ===== EMPTY STATE ===== */
+.empty-state {
+text-align: center;
+padding: 4rem 2rem;
+grid-column: 1 / -1;
+}
+
+.empty-state i {
+font-size: 4rem;
+color: #ddd;
+margin-bottom: 1rem;
+}
+
+.empty-state h4 {
+color: var(--gray);
+margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+color: #999;
+font-size: 0.9rem;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+background: var(--black);
+color: var(--white);
+padding: 3rem 2rem 1.5rem;
+margin-top: 4rem;
+}
+
+.footer-content {
+max-width: 1200px;
+margin: 0 auto;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 2rem;
+margin-bottom: 2rem;
+}
+
+.footer-section h4 {
+color: var(--primary);
+margin-bottom: 1rem;
+font-size: 1.1rem;
+}
+
+.footer-section p, .footer-section a {
+color: #aaa;
+text-decoration: none;
+font-size: 0.9rem;
+line-height: 2;
+display: block;
+transition: color 0.3s;
+}
+
+.footer-section a:hover {
+color: var(--primary);
+}
+
+.social-links {
+display: flex;
+gap: 1rem;
+margin-top: 1rem;
+}
+
+.social-links a {
+width: 40px;
+height: 40px;
+border-radius: 50%;
+background: var(--dark-gray);
+display: flex;
+align-items: center;
+justify-content: center;
+color: var(--white);
+transition: all 0.3s;
+}
+
+.social-links a:hover {
+background: var(--primary);
+transform: translateY(-3px);
+}
+
+.footer-bottom {
+text-align: center;
+padding-top: 2rem;
+border-top: 1px solid var(--dark-gray);
+color: #666;
+font-size: 0.85rem;
+}
+
+/* ===== TOAST NOTIFICATION ===== */
+.toast {
+position: fixed;
+bottom: 2rem;
+right: 2rem;
+background: var(--black);
+color: var(--white);
+padding: 1rem 1.5rem;
+border-radius: var(--radius-sm);
+box-shadow: var(--shadow-hover);
+display: flex;
+align-items: center;
+gap: 0.75rem;
+transform: translateX(150%);
+transition: transform 0.4s ease;
+z-index: 3000;
+font-weight: 500;
+}
+
+.toast.show {
+transform: translateX(0);
+}
+
+.toast i {
+color: var(--primary);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+.header-container {
+flex-direction: column;
+gap: 1rem;
+}
+
+.hero h2 {
+font-size: 1.8rem;
+}
+
+.contact-info {
+flex-direction: column;
+gap: 0.5rem;
+}
+
+.filters-card {
+flex-direction: column;
+align-items: stretch;
+}
+
+.form-row {
+grid-template-columns: 1fr;
+}
+
+.products-grid {
+grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+gap: 1.5rem;
+}
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+width: 8px;
+}
+
+::-webkit-scrollbar-track {
+background: var(--light-gray);
+}
+
+::-webkit-scrollbar-thumb {
+background: var(--primary);
+border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: var(--primary-dark);
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+<div class="header-container">
+<div class="logo-section">
+<img src="https://i.imgur.com/placeholder.jpg" alt="iSolutions Logo" class="logo-img" id="logoImg">
+<div class="logo-text">
+<h1>SERVICE CENTER</h1>
+<span>iSolutions</span>
+</div>
+</div>
+<div class="header-actions">
+<button class="btn btn-outline" onclick="openAdmin()">
+<i class="fas fa-cog"></i> Administrar
+</button>
+</div>
+</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-content">
+<h2>Catálogo de <span>Productos</span></h2>
+<p>Encuentra los mejores accesorios y servicios para tu dispositivo móvil</p>
+<div class="contact-info">
+<div class="contact-item">
+<i class="fab fa-instagram"></i>
+<span>@iSolutionsRD</span>
+</div>
+<div class="contact-item">
+<i class="fas fa-phone"></i>
+<span>829-629-9628</span>
+</div>
+<div class="contact-item">
+<i class="fas fa-map-marker-alt"></i>
+<span>Salazar iSolutions</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FILTERS -->
+<section class="filters-section">
+<div class="filters-card">
+<div class="search-box">
+<i class="fas fa-search"></i>
+<input type="text" id="searchInput" placeholder="Buscar productos..." onkeyup="filterProducts()">
+</div>
+<div class="category-filters" id="categoryFilters">
+<button class="filter-btn active" onclick="filterByCategory('all')">Todos</button>
+<button class="filter-btn" onclick="filterByCategory('accesorios')">Accesorios</button>
+<button class="filter-btn" onclick="filterByCategory('repuestos')">Repuestos</button>
+<button class="filter-btn" onclick="filterByCategory('servicios')">Servicios</button>
+<button class="filter-btn" onclick="filterByCategory('protectores')">Protectores</button>
+<button class="filter-btn" onclick="filterByCategory('cargadores')">Cargadores</button>
+</div>
+</div>
+</section>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+<div class="section-header">
+<h3>Nuestros <span>Productos</span></h3>
+<span class="products-count" id="productsCount">0 productos</span>
+</div>
+<div class="products-grid" id="productsGrid">
+<!-- Products will be loaded here -->
+</div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="footer-content">
+<div class="footer-section">
+<h4><i class="fas fa-mobile-alt"></i> iSolutions Service Center</h4>
+<p>Tu centro de servicio confiable para dispositivos móviles. Reparaciones, accesorios y más.</p>
+<div class="social-links">
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="#"><i class="fab fa-whatsapp"></i></a>
+</div>
+</div>
+<div class="footer-section">
+<h4>Servicios</h4>
+<a href="#">Reparación de Pantallas</a>
+<a href="#">Cambio de Batería</a>
+<a href="#">Desbloqueo</a>
+<a href="#">Venta de Accesorios</a>
+</div>
+<div class="footer-section">
+<h4>Contacto</h4>
+<a href="tel:8296299628"><i class="fas fa-phone"></i> 829-629-9628</a>
+<a href="#"><i class="fab fa-instagram"></i> @iSolutionsRD</a>
+<a href="#"><i class="fas fa-envelope"></i> info@isolutions.com</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p> 2024 iSolutions Service Center. Todos los derechos reservados.</p>
+</div>
+</footer>
+
+<!-- ADMIN PANEL -->
+<div class="admin-panel" id="adminPanel">
+<div class="admin-card">
+<div class="admin-header">
+<h3><i class="fas fa-cog"></i> Panel de Administración</h3>
+<button class="close-btn" onclick="closeAdmin()"><i class="fas fa-times"></i></button>
+</div>
+<div class="admin-body">
+<form id="productForm" onsubmit="saveProduct(event)">
+<input type="hidden" id="productId">
+
+<div class="form-group">
+<label>Nombre del Producto <span>*</span></label>
+<input type="text" id="productName" required placeholder="Ej: Protector de Pantalla iPhone 14">
+</div>
+
+<div class="form-row">
+<div class="form-group">
+<label>Precio (RD$) <span>*</span></label>
+<input type="number" id="productPrice" required placeholder="Ej: 350" min="0" step="0.01">
+</div>
+<div class="form-group">
+<label>Precio Anterior (Opcional)</label>
+<input type="number" id="productOldPrice" placeholder="Ej: 500" min="0" step="0.01">
+</div>
+</div>
+
+<div class="form-row">
+<div class="form-group">
+<label>Categoría <span>*</span></label>
+<select id="productCategory" required>
+<option value="">Seleccionar...</option>
+<option value="accesorios">Accesorios</option>
+<option value="repuestos">Repuestos</option>
+<option value="servicios">Servicios</option>
+<option value="protectores">Protectores</option>
+<option value="cargadores">Cargadores</option>
+<option value="audifonos">Audífonos</option>
+<option value="cases">Cases / Fundas</option>
+</select>
+</div>
+<div class="form-group">
+<label>URL de Imagen</label>
+<input type="url" id="productImage" placeholder="https://ejemplo.com/imagen.jpg">
+</div>
+</div>
+
+<div class="form-group">
+<label>Descripción</label>
+<textarea id="productDescription" placeholder="Describe el producto..."></textarea>
+</div>
+
+<div class="form-group">
+<div class="checkbox-group">
+<input type="checkbox" id="productOnSale">
+<label for="productOnSale" style="margin: 0; font-weight: 500;">Marcar como Oferta / Promoción</label>
+</div>
+</div>
+
+<div class="image-preview" id="imagePreview">
+<span><i class="fas fa-image"></i> Vista previa</span>
+</div>
+</form>
+</div>
+<div class="admin-footer">
+<button class="btn btn-outline" onclick="closeAdmin()">Cancelar</button>
+<button class="btn btn-primary" onclick="document.getElementById('productForm').dispatchEvent(new Event('submit'))">
+<i class="fas fa-save"></i> Guardar Producto
+</button>
+</div>
+</div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+<i class="fas fa-check-circle"></i>
+<span id="toastMessage">Operación exitosa</span>
+</div>
+
+<script>
+// ===== DATA MANAGEMENT =====
+let products = JSON.parse(localStorage.getItem('isolutions_products')) || [
+{
+id: 1,
+name: "Protector de Pantalla iPhone 14 Pro",
+price: 450,
+oldPrice: 600,
+category: "protectores",
+description: "Protector de vidrio templado 9H, anti-rayaduras y anti-huellas.",
+image: "",
+onSale: true
+},
+{
+id: 2,
+name: "Case Antigolpe Samsung S23",
+price: 350,
+oldPrice: null,
+category: "cases",
+description: "Funda reforzada con esquinas de absorción de impacto.",
+image: "",
+onSale: false
+},
+{
+id: 3,
+name: "Cargador Rápido 20W USB-C",
+price: 800,
+oldPrice: 1200,
+category: "cargadores",
+description: "Cargador rápido compatible con iPhone y Android.",
+image: "",
+onSale: true
+},
+{
+id: 4,
+name: "Reparación de Pantalla iPhone",
+price: 3500,
+oldPrice: null,
+category: "servicios",
+description: "Cambio de pantalla original con garantía de 30 días.",
+image: "",
+onSale: false
+},
+{
+id: 5,
+name: "Audífonos Bluetooth TWS",
+price: 1200,
+oldPrice: 1800,
+category: "audifonos",
+description: "Audífonos inalámbricos con sonido HD y batería de larga duración.",
+image: "",
+onSale: true
+},
+{
+id: 6,
+name: "Batería iPhone 11 Original",
+price: 2500,
+oldPrice: null,
+category: "repuestos",
+description: "Batería original de reemplazo con capacidad del 100%.",
+image: "",
+onSale: false
+}
+];
+
+let currentFilter = 'all';
+let editingId = null;
+
+// ===== INITIALIZATION =====
+document.addEventListener('DOMContentLoaded', function() {
+renderProducts();
+setupImagePreview();
+
+// Set logo from uploaded image
+const logoImg = document.getElementById('logoImg');
+logoImg.src = '/mnt/agents/upload/5159368D-3EA0-4112-BFC5-824D70AD3982.jpg';
+logoImg.onerror = function() {
+this.src = 'https://via.placeholder.com/60x60/4CAF50/ffffff?text=iS';
+};
+});
+
+// ===== RENDER PRODUCTS =====
+function renderProducts() {
+const grid = document.getElementById('productsGrid');
+const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+let filtered = products.filter(p => {
+const matchesSearch = p.name.toLowerCase().includes(searchTerm) ||
+p.description.toLowerCase().includes(searchTerm);
+const matchesCategory = currentFilter === 'all' || p.category === currentFilter;
+return matchesSearch && matchesCategory;
+});
+
+document.getElementById('productsCount').textContent = `${filtered.length} producto${filtered.length !== 1 ? 's' : ''}`;
+
+if (filtered.length === 0) {
+grid.innerHTML = `
+<div class="empty-state">
+<i class="fas fa-box-open"></i>
+<h4>No se encontraron productos</h4>
+<p>Intenta con otra búsqueda o agrega nuevos productos desde el panel de administración.</p>
+</div>
+`;
+return;
+}
+
+grid.innerHTML = filtered.map(product => `
+<div class="product-card">
+<div style="position: relative;">
+<div class="product-image">
+${product.image ?
+`<img src="${product.image}" alt="${product.name}" onerror="this.parentElement.innerHTML='<i class=\\'fas fa-mobile-alt\\'></i>'">` :
+`<i class="fas fa-mobile-alt"></i>`
+}
+</div>
+${product.onSale ? '<span class="product-badge sale">Oferta</span>' : ''}
+</div>
+<div class="product-info">
+<div class="product-category">${getCategoryName(product.category)}</div>
+<div class="product-name">${product.name}</div>
+<div class="product-description">${product.description || 'Sin descripción'}</div>
+<div class="product-footer">
+<div class="product-price">
+RD$ ${formatPrice(product.price)}
+${product.oldPrice ? `<span class="original">RD$ ${formatPrice(product.oldPrice)}</span>` : ''}
+</div>
+<div class="product-actions">
+<button class="icon-btn" onclick="editProduct(${product.id})" title="Editar">
+<i class="fas fa-edit"></i>
+</button>
+<button class="icon-btn delete" onclick="deleteProduct(${product.id})" title="Eliminar">
+<i class="fas fa-trash"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+`).join('');
+}
+
+function getCategoryName(cat) {
+const names = {
+'accesorios': 'Accesorios',
+'repuestos': 'Repuestos',
+'servicios': 'Servicios',
+'protectores': 'Protectores',
+'cargadores': 'Cargadores',
+'audifonos': 'Audífonos',
+'cases': 'Cases / Fundas'
+};
+return names[cat] || cat;
+}
+
+function formatPrice(price) {
+return parseFloat(price).toLocaleString('es-DO', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+}
+
+// ===== FILTERING =====
+function filterProducts() {
+renderProducts();
+}
+
+function filterByCategory(category) {
+currentFilter = category;
+
+// Update active button
+document.querySelectorAll('.filter-btn').forEach(btn => {
+btn.classList.remove('active');
+});
+event.target.classList.add('active');
+
+renderProducts();
+}
+
+// ===== ADMIN PANEL =====
+function openAdmin() {
+document.getElementById('adminPanel').classList.add('active');
+document.body.style.overflow = 'hidden';
+resetForm();
+}
+
+function closeAdmin() {
+document.getElementById('adminPanel').classList.remove('active');
+document.body.style.overflow = '';
+editingId = null;
+}
+
+function resetForm() {
+document.getElementById('productForm').reset();
+document.getElementById('productId').value = '';
+document.getElementById('imagePreview').innerHTML = '<span><i class="fas fa-image"></i> Vista previa</span>';
+editingId = null;
+}
+
+function setupImagePreview() {
+const imageInput = document.getElementById('productImage');
+const preview = document.getElementById('imagePreview');
+
+imageInput.addEventListener('input', function() {
+if (this.value) {
+preview.innerHTML = `<img src="${this.value}" onerror="this.parentElement.innerHTML='<span><i class=\\'fas fa-image\\'></i> URL inválida</span>'">`;
+} else {
+preview.innerHTML = '<span><i class="fas fa-image"></i> Vista previa</span>';
+}
+});
+}
+
+// ===== CRUD OPERATIONS =====
+function saveProduct(e) {
+e.preventDefault();
+
+const name = document.getElementById('productName').value.trim();
+const price = parseFloat(document.getElementById('productPrice').value);
+const oldPrice = document.getElementById('productOldPrice').value ? parseFloat(document.getElementById('productOldPrice').value) : null;
+const category = document.getElementById('productCategory').value;
+const description = document.getElementById('productDescription').value.trim();
+const image = document.getElementById('productImage').value.trim();
+const onSale = document.getElementById('productOnSale').checked;
+
+if (!name || !price || !category) {
+showToast('Por favor completa los campos requeridos', 'error');
+return;
+}
+
+const productData = {
+id: editingId || Date.now(),
+name,
+price,
+oldPrice,
+category,
+description,
+image,
+onSale
+};
+
+if (editingId) {
+const index = products.findIndex(p => p.id === editingId);
+if (index !== -1) {
+products[index] = productData;
+}
+showToast('Producto actualizado correctamente');
+} else {
+products.push(productData);
+showToast('Producto agregado correctamente');
+}
+
+localStorage.setItem('isolutions_products', JSON.stringify(products));
+renderProducts();
+closeAdmin();
+}
+
+function editProduct(id) {
+const product = products.find(p => p.id === id);
+if (!product) return;
+
+editingId = id;
+document.getElementById('productId').value = id;
+document.getElementById('productName').value = product.name;
+document.getElementById('productPrice').value = product.price;
+document.getElementById('productOldPrice').value = product.oldPrice || '';
+document.getElementById('productCategory').value = product.category;
+document.getElementById('productDescription').value = product.description || '';
+document.getElementById('productImage').value = product.image || '';
+document.getElementById('productOnSale').checked = product.onSale || false;
+
+// Trigger image preview
+const imageInput = document.getElementById('productImage');
+imageInput.dispatchEvent(new Event('input'));
+
+openAdmin();
+}
+
+function deleteProduct(id) {
+if (!confirm('¿Estás seguro de que deseas eliminar este producto?')) return;
+
+products = products.filter(p => p.id !== id);
+localStorage.setItem('isolutions_products', JSON.stringify(products));
+renderProducts();
+showToast('Producto eliminado correctamente');
+}
+
+// ===== TOAST =====
+function showToast(message, type = 'success') {
+const toast = document.getElementById('toast');
+const toastMessage = document.getElementById('toastMessage');
+
+toastMessage.textContent = message;
+toast.querySelector('i').className = type === 'error' ? 'fas fa-exclamation-circle' : 'fas fa-check-circle';
+
+toast.classList.add('show');
+setTimeout(() => {
+toast.classList.remove('show');
+}, 3000);
+}
+
+// Close modal on outside click
+document.getElementById('adminPanel').addEventListener('click', function(e) {
+if (e.target === this) {
+closeAdmin();
+}
+});
+
+// Escape key to close
+document.addEventListener('keydown', function(e) {
+if (e.key === 'Escape') {
+closeAdmin();
+}
+});
+</script>
+</body>
+</html>
