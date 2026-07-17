@@ -149,7 +149,7 @@ body { font-family: 'Poppins', sans-serif; background: var(--black); color: #fff
 .product-info { padding: 1.8rem; }
 .product-category { color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.5rem; }
 .product-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: #fff; line-height: 1.3; }
-.product-description { color: #888; font-size: 0.85rem; margin-bottom: 1.2rem; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.product-description { color: #888; font-size: 0.85rem; margin-bottom: 1.2rem; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .product-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 1.2rem; border-top: 1px solid var(--border); }
 .price-block { display: flex; flex-direction: column; gap: 0.2rem; }
 .price-current { font-size: 1.3rem; font-weight: 800; color: var(--primary); }
@@ -313,6 +313,7 @@ body { font-family: 'Poppins', sans-serif; background: var(--black); color: #fff
 ::-webkit-scrollbar-thumb:hover { background: var(--primary-dark); }
 ::selection { background: rgba(76,175,80,0.3); color: #fff; }
 </style>
+<base target="_blank">
 <base target="_blank">
 </head>
 <body>
@@ -866,13 +867,14 @@ function closeDeleteModal() {
 
 function confirmDelete() {
   if (deleteTargetId === null) return;
-  const product = products.find(p => p.id === deleteTargetId || p.firebaseKey === deleteTargetId);
+  const idStr = String(deleteTargetId);
+  const product = products.find(p => String(p.id) === idStr || p.firebaseKey === deleteTargetId);
   if (product && product.firebaseKey && firebaseReady) {
     deleteProductFromFirebase(product.firebaseKey)
       .then(() => showToast('Producto eliminado correctamente'))
       .catch(error => showToast('Error al eliminar: ' + error.message, 'error'));
   } else {
-    products = products.filter(p => p.id !== deleteTargetId && p.firebaseKey !== deleteTargetId);
+    products = products.filter(p => String(p.id) !== idStr && p.firebaseKey !== deleteTargetId);
     renderProducts();
     showToast('Producto eliminado (modo local)');
   }
@@ -899,12 +901,13 @@ function renderProducts() {
 
   grid.innerHTML = filtered.map(product => {
     const productId = product.firebaseKey || product.id;
+    const productIdQuoted = typeof productId === 'string' ? "'" + productId + "'" : productId;
     const hasImage = product.image && product.image.trim() !== '';
     const hasOldPrice = product.oldPrice && parseFloat(product.oldPrice) > 0;
     return '<div class="product-card"><div class="product-image-wrap">' +
       (hasImage ? '<img src="' + product.image + '" alt="' + product.name + '" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\';"><div class="img-fallback" style="display:none;"><i class="fas fa-mobile-alt"></i></div>' : '<div class="img-fallback"><i class="fas fa-mobile-alt"></i></div>') +
       (product.onSale ? '<span class="product-badge sale">Oferta</span>' : '') +
-      '</div><div class="product-info"><div class="product-category">' + getCategoryName(product.category) + '</div><div class="product-name">' + product.name + '</div><div class="product-description">' + (product.description || 'Sin descripcion') + '</div><div class="product-footer"><div class="price-block"><div class="price-current">RD$ ' + formatPrice(product.price) + '</div>' + (hasOldPrice ? '<div class="price-old">RD$ ' + formatPrice(product.oldPrice) + '</div>' : '') + '</div><div class="product-actions ' + (isAdminMode ? 'admin-visible' : '') + '"><button class="icon-btn" onclick="editProduct(' + productId + ')" title="Editar"><i class="fas fa-edit"></i></button><button class="icon-btn delete" onclick="openDeleteModal(' + productId + ')" title="Eliminar"><i class="fas fa-trash"></i></button></div></div></div></div>';
+      '</div><div class="product-info"><div class="product-category">' + getCategoryName(product.category) + '</div><div class="product-name">' + product.name + '</div><div class="product-description">' + (product.description || 'Sin descripcion') + '</div><div class="product-footer"><div class="price-block"><div class="price-current">RD$ ' + formatPrice(product.price) + '</div>' + (hasOldPrice ? '<div class="price-old">RD$ ' + formatPrice(product.oldPrice) + '</div>' : '') + '</div><div class="product-actions ' + (isAdminMode ? 'admin-visible' : '') + '"><button class="icon-btn" onclick="editProduct(' + productIdQuoted + ')" title="Editar"><i class="fas fa-edit"></i></button><button class="icon-btn delete" onclick="openDeleteModal(' + productIdQuoted + ')" title="Eliminar"><i class="fas fa-trash"></i></button></div></div></div></div>';
   }).join('');
 }
 
@@ -925,8 +928,14 @@ function filterProducts() { renderProducts(); }
 function filterByCategory(category, clickedBtn) {
   currentFilter = category;
   document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-  if (clickedBtn) clickedBtn.classList.add('active');
-  else if (typeof event !== 'undefined' && event && event.target) event.target.classList.add('active');
+  if (clickedBtn) {
+    clickedBtn.classList.add('active');
+  } else {
+    const catName = getCategoryName(category).toLowerCase();
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      if (btn.textContent.trim().toLowerCase() === catName) btn.classList.add('active');
+    });
+  }
   renderProducts();
 }
 
@@ -982,7 +991,8 @@ function saveProduct(e) {
   const productData = { name, price, oldPrice, category, description, image, onSale };
 
   if (editingId) {
-    const product = products.find(p => p.id === editingId || p.firebaseKey === editingId);
+    const editIdStr = String(editingId);
+    const product = products.find(p => String(p.id) === editIdStr || p.firebaseKey === editingId);
     if (product && product.firebaseKey && firebaseReady) {
       updateProductInFirebase(product.firebaseKey, productData)
         .then(() => showToast('Producto actualizado correctamente'))
@@ -1009,7 +1019,8 @@ function saveProduct(e) {
 
 function editProduct(id) {
   if (!isAdminMode) return;
-  const product = products.find(p => p.id === id || p.firebaseKey === id);
+  const idStr = String(id);
+  const product = products.find(p => String(p.id) === idStr || p.firebaseKey === id);
   if (!product) return;
   editingId = id;
   document.getElementById('productId').value = id;
