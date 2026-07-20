@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>iSolutions Service Center</title>
-<link rel="icon" href="https://i.ibb.co/8DRwhv9X/logo.png" type="image/png">
+<link rel="icon" href="logo.png" type="png">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -498,22 +498,22 @@ body { font-family: 'Poppins', sans-serif; background: var(--black); color: #fff
   </div>
   <div class="contact-grid">
     <div class="contact-info-block animate-on-scroll">
-      <div class="contact-item-large"><i class="fas fa-map-marker-alt"></i><div><h4>Ubicacion</h4><p>Salazar iSolutions, Republica Dominicana</p></div></div>
+      <div class="contact-item-large" style="cursor:pointer;" onclick="window.open('https://maps.google.com/?q=Salazar+iSolutions+Republica+Dominicana', '_blank')"><i class="fas fa-map-marker-alt"></i><div><h4>Ubicacion</h4><p>Salazar iSolutions, Republica Dominicana</p></div></div>
       <div class="contact-item-large"><i class="fas fa-phone"></i><div><h4>Telefono</h4><p>+1 (829) 629-9628</p></div></div>
-      <div class="contact-item-large"><i class="fab fa-instagram"></i><div><h4>Instagram</h4><p>@iSolutionsRD</p></div></div>
+      <div class="contact-item-large" style="cursor:pointer;" onclick="window.open('https://www.instagram.com/isolutionsrd?igsh=MThyMW45M3U3MWExaw%3D%3D', '_blank')"><i class="fab fa-instagram"></i><div><h4>Instagram</h4><p>@iSolutionsRD</p></div></div>
       <div class="contact-item-large"><i class="fas fa-clock"></i><div><h4>Horario</h4><p>Lunes a viernes: 8:00 AM- 12:00 PM y 2:00PM - 6:30 PM y Sabado: 8:00 AM - 2:00 PM</p></div></div>
     </div>
     <div class="contact-form animate-on-scroll">
       <h3><i class="fas fa-paper-plane" style="color:var(--primary);margin-right:0.5rem;"></i>Envianos un Mensaje</h3>
       <form id="contactForm" onsubmit="submitContact(event)">
         <div class="form-row">
-          <div class="form-group"><label>Nombre</label><input type="text" name="nombre" placeholder="Tu nombre" required></div>
-          <div class="form-group"><label>Telefono</label><input type="tel" name="telefono" placeholder="Tu telefono" required></div>
+          <div class="form-group"><label>Nombre</label><input type="text" placeholder="Tu nombre" required></div>
+          <div class="form-group"><label>Telefono</label><input type="tel" placeholder="Tu telefono" required></div>
         </div>
-        <div class="form-group"><label>Email</label><input type="email" name="email" placeholder="Tu email"></div>
-        <div class="form-group"><label>Asunto</label><select name="asunto"><option>Consulta General</option><option>Reparacion</option><option>Venta de Equipo</option><option>Otro</option></select></div>
-        <div class="form-group"><label>Mensaje</label><textarea name="mensaje" placeholder="Describe tu consulta..."></textarea></div>
-        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;"><i class="fab fa-whatsapp"></i> Enviar por WhatsApp</button>
+        <div class="form-group"><label>Email</label><input type="email" placeholder="Tu email"></div>
+        <div class="form-group"><label>Asunto</label><select><option>Consulta General</option><option>Reparacion</option><option>Venta de Equipo</option><option>Otro</option></select></div>
+        <div class="form-group"><label>Mensaje</label><textarea placeholder="Describe tu consulta..."></textarea></div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;"><i class="fas fa-paper-plane"></i> Enviar Mensaje</button>
       </form>
     </div>
   </div>
@@ -525,7 +525,7 @@ body { font-family: 'Poppins', sans-serif; background: var(--black); color: #fff
       <h3>iSolutions <span>Service Center</span></h3>
       <p>Tu centro de servicio confiable para dispositivos moviles. Reparaciones, accesorios y mas con garantia real.</p>
       <div class="social-links">
-        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.instagram.com/isolutionsrd?igsh=MThyMW45M3U3MWExaw%3D%3D" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
         <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
         <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -549,9 +549,9 @@ body { font-family: 'Poppins', sans-serif; background: var(--black); color: #fff
     <div class="footer-section">
       <h4>Contacto</h4>
       <a href="tel:8296299628"><i class="fas fa-phone" style="margin-right:0.5rem;"></i> 829-629-9628</a>
-      <a href="#"><i class="fab fa-instagram" style="margin-right:0.5rem;"></i> @iSolutionsRD</a>
+      <a href="https://www.instagram.com/isolutionsrd?igsh=MThyMW45M3U3MWExaw%3D%3D" target="_blank"><i class="fab fa-instagram" style="margin-right:0.5rem;"></i> @iSolutionsRD</a>
       <a href="#"><i class="fas fa-envelope" style="margin-right:0.5rem;"></i> info@isolutions.com</a>
-      <a href="#"><i class="fas fa-map-marker-alt" style="margin-right:0.5rem;"></i> Salazar iSolutions</a>
+      <a href="https://maps.google.com/?q=Salazar+iSolutions+Republica+Dominicana" target="_blank"><i class="fas fa-map-marker-alt" style="margin-right:0.5rem;"></i> Salazar iSolutions</a>
     </div>
   </div>
   <div class="footer-bottom"><p> LeslyCodeStudio.</p></div>
@@ -849,7 +849,7 @@ function activateAdminMode() {
   isAdminMode = true;
   document.getElementById('adminModeBadge').classList.add('active');
   document.getElementById('adminBtn').innerHTML = '<i class="fas fa-plus"></i> Agregar Producto';
-  document.getElementById('adminBtn').onclick = openAdmin;
+  document.getElementById('adminBtn').onclick = function() { resetForm(); openAdmin(); };
   renderProducts();
   showToast('Modo administrador activado');
 }
@@ -943,7 +943,6 @@ function filterByCategory(category, clickedBtn) {
 function openAdmin() {
   document.getElementById('adminPanel').classList.add('active');
   document.body.style.overflow = 'hidden';
-  resetForm();
 }
 function closeAdmin() {
   document.getElementById('adminPanel').classList.remove('active');
@@ -999,7 +998,7 @@ function saveProduct(e) {
         .then(() => showToast('Producto actualizado correctamente'))
         .catch(error => showToast('Error al actualizar: ' + error.message, 'error'));
     } else {
-      const idx = products.findIndex(p => p.id === editingId || p.firebaseKey === editingId);
+      const idx = products.findIndex(p => String(p.id) === editIdStr || p.firebaseKey === editingId);
       if (idx !== -1) products[idx] = { ...products[idx], ...productData };
       renderProducts();
       showToast('Producto actualizado (modo local)');
@@ -1051,27 +1050,8 @@ function showToast(message, type) {
 
 function submitContact(e) {
   e.preventDefault();
-  const form = document.getElementById('contactForm');
-  const formData = new FormData(form);
-  const nombre = formData.get('nombre') || '';
-  const telefono = formData.get('telefono') || '';
-  const email = formData.get('email') || '';
-  const asunto = formData.get('asunto') || '';
-  const mensaje = formData.get('mensaje') || '';
-
-  const numeroWhatsApp = '18296299628';
-  const texto = 
-    '*Nuevo mensaje desde iSolutions Service Center*%0A%0A' +
-    '*Nombre:* ' + encodeURIComponent(nombre) + '%0A' +
-    '*Telefono:* ' + encodeURIComponent(telefono) + '%0A' +
-    '*Email:* ' + encodeURIComponent(email || 'No especificado') + '%0A' +
-    '*Asunto:* ' + encodeURIComponent(asunto) + '%0A' +
-    '*Mensaje:* ' + encodeURIComponent(mensaje || 'Sin mensaje') + '%0A%0A' +
-    '_Enviado desde isolutions.com_';
-
-  const url = 'https://wa.me/' + numeroWhatsApp + '?text=' + texto;
-  window.open(url, '_blank');
-  form.reset();
+  showToast('Mensaje enviado correctamente. Te contactaremos pronto!');
+  document.getElementById('contactForm').reset();
 }
 
 // Event listeners
@@ -1093,4 +1073,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 </body>
-</html>
+</html> 
