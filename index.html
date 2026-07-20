@@ -669,29 +669,15 @@ let products = [];
 let currentFilter = 'all';
 let editingId = null;
 
-const demoProducts = [
-  { name: "iPhone 14 Pro Max 128GB", price: 45000, oldPrice: 52000, category: "celulares", description: "iPhone 14 Pro Max en excelente estado. 128GB de almacenamiento. Garantia de 90 dias.", image: "https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?w=400&h=400&fit=crop", onSale: true },
-  { name: "Samsung Galaxy S23 Ultra", price: 38000, oldPrice: null, category: "celulares", description: "Samsung Galaxy S23 Ultra 256GB. Pantalla AMOLED 6.8. Camara de 200MP.", image: "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=400&h=400&fit=crop", onSale: false },
-  { name: "iPad Air 5ta Gen 64GB", price: 22000, oldPrice: 25000, category: "tablets", description: "iPad Air con chip M1. 64GB de almacenamiento. Pantalla Liquid Retina 10.9 pulgadas.", image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400&h=400&fit=crop", onSale: true },
-  { name: "Cargador MagSafe 20W", price: 1200, oldPrice: null, category: "cargadores", description: "Cargador inalambrico MagSafe original Apple. 20W de potencia. Compatible con iPhone 12+.", image: "https://images.unsplash.com/photo-1622434641406-a158123450f9?w=400&h=400&fit=crop", onSale: false },
-  { name: "AirPods Pro 2da Gen", price: 8500, oldPrice: 9500, category: "accesorios", description: "AirPods Pro 2 con cancelacion activa de ruido. Audio espacial adaptativo.", image: "https://images.unsplash.com/photo-1603351154351-5cfb3d04ef30?w=400&h=400&fit=crop", onSale: true },
-  { name: "Pantalla iPhone 13", price: 3500, oldPrice: 4500, category: "repuestos", description: "Pantalla OLED original para iPhone 13. Incluye herramientas de instalacion.", image: "https://images.unsplash.com/photo-1592434134753-a70baf7979d5?w=400&h=400&fit=crop", onSale: true },
-  { name: "PlayStation 5 Slim", price: 35000, oldPrice: null, category: "consolas", description: "PlayStation 5 Slim 1TB SSD. Incluye un control DualSense. Garantia de distribuidor.", image: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=400&h=400&fit=crop", onSale: false },
-  { name: "Teclado Mecanico RGB", price: 4500, oldPrice: null, category: "perifericos", description: "Teclado mecanico gaming con switches rojos. Retroiluminacion RGB personalizable.", image: "https://images.unsplash.com/photo-1595225476474-87563907a212?w=400&h=400&fit=crop", onSale: false }
-];
-
-// ========== INITIAL RENDER (works immediately, no waiting for Firebase) ==========
+// ========== INITIAL RENDER ==========
 function initApp() {
-  // Start with demo products visible immediately
-  products = demoProducts.map((p, i) => ({ ...p, id: i + 1, firebaseKey: null }));
+  products = [];
   renderProducts();
 
-  // Then try to connect to Firebase in background
   if (firebaseReady && productsRef) {
     initFirebase();
   } else {
     console.log('Running in local mode - Firebase not available');
-    showToast('Modo local activado - Firebase no disponible', 'error');
   }
 }
 
@@ -699,17 +685,13 @@ function initFirebase() {
   productsRef.on('value', (snapshot) => {
     const data = snapshot.val();
     if (data) {
-      // Firebase has data - use it
       products = Object.keys(data).map(key => ({
         firebaseKey: key,
         id: key,
         ...data[key]
       }));
     } else {
-      // Firebase empty - seed with demo products
       products = [];
-      seedDemoProducts();
-      return; // renderProducts will be called after seed
     }
     renderProducts();
   }, (error) => {
@@ -719,11 +701,7 @@ function initFirebase() {
 }
 
 function seedDemoProducts() {
-  if (!firebaseReady || !productsRef) return;
-  demoProducts.forEach(product => {
-    const newRef = productsRef.push();
-    newRef.set({ ...product, createdAt: Date.now() });
-  });
+  // Demo products removed - catalog starts empty
 }
 
 function addProductToFirebase(productData) {
@@ -1073,4 +1051,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 </body>
-</html> 
+</html>
